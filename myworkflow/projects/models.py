@@ -1,3 +1,10 @@
 from django.db import models
 
-# Create your models here.
+
+class ComputerScienceProjects(models.Model):
+    pass
+
+
+class UniversityProjects(models.Model):
+    pass
+
