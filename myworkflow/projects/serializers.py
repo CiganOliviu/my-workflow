@@ -12,3 +12,9 @@ class PersonalProjectsSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalProject
         fields = '__all__'
+
+
+class UniversityProjectsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UniversityProject
+        fields = '__all__'
