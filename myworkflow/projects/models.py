@@ -8,7 +8,7 @@ class DevelopmentStack(models.Model):
         return self.name
 
 
-class PersonalProjects(models.Model):
+class PersonalProject(models.Model):
     name = models.CharField(max_length=50)
     details = models.TextField()
     stack = models.ForeignKey(DevelopmentStack, on_delete=models.CASCADE)
@@ -19,7 +19,7 @@ class PersonalProjects(models.Model):
         return self.name
 
 
-class UniversityProjects(models.Model):
+class UniversityProject(models.Model):
     name = models.CharField(max_length=50)
     details = models.TextField()
     start_date = models.DateTimeField()
