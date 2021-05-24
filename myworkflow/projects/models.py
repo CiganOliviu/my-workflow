@@ -8,7 +8,7 @@ class DevelopmentStack(models.Model):
         return self.name
 
 
-class ComputerScienceProjects(models.Model):
+class PersonalProjects(models.Model):
     name = models.CharField(max_length=50)
     details = models.TextField()
     stack = models.ForeignKey(DevelopmentStack, on_delete=models.CASCADE)
