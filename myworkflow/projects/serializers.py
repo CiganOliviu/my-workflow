@@ -14,7 +14,19 @@ class PersonalProjectsSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class PersonalFinishedProjectSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PersonalFinishedProject
+        fields = '__all__'
+
+
 class UniversityProjectsSerializer(serializers.ModelSerializer):
     class Meta:
         model = UniversityProject
+        fields = '__all__'
+
+
+class UniversityClassesSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UniversityClasses
         fields = '__all__'
