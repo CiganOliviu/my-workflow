@@ -1,5 +1,7 @@
 from django.db import models
 
+from projects.data_structures import LEVEL_SUPPORT
+
 
 class DevelopmentStack(models.Model):
     name = models.CharField(max_length=50)
@@ -38,3 +40,10 @@ class UniversityProject(models.Model):
     def __str__(self):
         return self.name
 
+
+class UniversityClasses(models.Model):
+    name = models.CharField(max_length=50)
+    my_level_support = models.CharField(max_length=1, choices=LEVEL_SUPPORT, default=0)
+
+    def __str__(self):
+        return self.name
