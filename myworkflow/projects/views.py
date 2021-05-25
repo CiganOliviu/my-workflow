@@ -242,4 +242,31 @@ class UniversityClassesLister(APIView):
 
 
 class UniversityClassesDetails(APIView):
-    pass
+
+    def get_post(self, pk):
+        try:
+            return UniversityClasses.objects.get(pk=pk)
+        except:
+            raise Http404
+
+    def get(self, request, pk, format=None):
+        post = self.get_post(pk)
+        serializer = UniversityClassesSerializer(post)
+
+        return Response(serializer.data)
+
+    def put(self, request, pk, format=None):
+        university = self.get_post(pk)
+        serializer = UniversityClassesSerializer(university, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk, format=None):
+        university = self.get_post(pk)
+        university.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
