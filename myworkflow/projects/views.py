@@ -118,6 +118,14 @@ class PersonalProjectsDetails(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
+class PersonalFinishedProjectLister(APIView):
+    pass
+
+
+class PersonalFinishedProjectDetails(APIView):
+    pass
+
+
 class UniversityProjectLister(APIView):
 
     def get(self, request, format=None):
@@ -168,3 +176,11 @@ class UniversityProjectsDetails(APIView):
         university.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class UniversityClassesLister(APIView):
+    pass
+
+
+class UniversityClassesDetails(APIView):
+    pass
