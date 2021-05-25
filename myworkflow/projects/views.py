@@ -4,8 +4,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from projects.models import DevelopmentStack, PersonalProject, UniversityProject
-from projects.serializers import DevelopmentStackSerializer, PersonalProjectsSerializer, UniversityProjectsSerializer
+from projects.models import DevelopmentStack, PersonalProject, UniversityProject, PersonalFinishedProject
+from projects.serializers import DevelopmentStackSerializer, PersonalProjectsSerializer, UniversityProjectsSerializer, \
+    PersonalFinishedProjectSerializer
 
 
 def index(request):
@@ -119,7 +120,22 @@ class PersonalProjectsDetails(APIView):
 
 
 class PersonalFinishedProjectLister(APIView):
-    pass
+
+    def get(self, request, format=None):
+        projects = PersonalFinishedProject.objects.all()
+        serializer = PersonalFinishedProjectSerializer(projects, many=True)
+
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = PersonalFinishedProjectSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class PersonalFinishedProjectDetails(APIView):
