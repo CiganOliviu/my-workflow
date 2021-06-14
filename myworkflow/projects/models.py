@@ -5,7 +5,7 @@ from projects.data_structures import LEVEL_SUPPORT
 
 class DevelopmentStack(models.Model):
     name = models.CharField(max_length=50)
-
+    
     def __str__(self):
         return self.name
 
