@@ -4,3 +4,9 @@ LEVEL_SUPPORT = (
     ("3", "3"),
     ("4", "4"),
 )
+
+VISIBILITY = (
+    ("public", "public"),
+    ("private", "private"),
+    ("forked", "forked"),
+)
