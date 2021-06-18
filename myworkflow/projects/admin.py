@@ -16,7 +16,6 @@ class UniversityProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(DevelopmentStack)
 admin.site.register(PersonalProject, PersonalProjectAdmin)
-admin.site.register(PersonalFinishedProject, PersonalFinishedProjectAdmin)
 admin.site.register(UniversityProject, UniversityProjectAdmin)
 admin.site.register(UniversityClasses)
 
