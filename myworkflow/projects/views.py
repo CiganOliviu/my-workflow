@@ -4,10 +4,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from projects.models import DevelopmentStack, PersonalProject, UniversityProject, PersonalFinishedProject, \
+from projects.models import DevelopmentStack, PersonalProject, UniversityProject, \
     UniversityClasses
 from projects.serializers import DevelopmentStackSerializer, PersonalProjectsSerializer, UniversityProjectsSerializer, \
-    PersonalFinishedProjectSerializer, UniversityClassesSerializer
+    UniversityClassesSerializer
 
 
 def index(request):
@@ -106,56 +106,6 @@ class PersonalProjectsDetails(APIView):
     def put(self, request, pk, format=None):
         project = self.get_post(pk)
         serializer = PersonalProjectsSerializer(project, data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def delete(self, request, pk, format=None):
-        project = self.get_post(pk)
-        project.delete()
-
-        return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-class PersonalFinishedProjectLister(APIView):
-
-    def get(self, request, format=None):
-        projects = PersonalFinishedProject.objects.all()
-        serializer = PersonalFinishedProjectSerializer(projects, many=True)
-
-        return Response(serializer.data)
-
-    def post(self, request, format=None):
-        serializer = PersonalFinishedProjectSerializer(data=request.data)
-
-        if serializer.is_valid():
-            serializer.save()
-
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-class PersonalFinishedProjectDetails(APIView):
-
-    def get_post(self, pk):
-        try:
-            return PersonalFinishedProject.objects.get(pk=pk)
-        except:
-            raise Http404
-
-    def get(self, request, pk, format=None):
-        post = self.get_post(pk)
-        serializer = PersonalFinishedProjectSerializer(post)
-
-        return Response(serializer.data)
-
-    def put(self, request, pk, format=None):
-        project = self.get_post(pk)
-        serializer = PersonalFinishedProjectSerializer(project, data=request.data)
 
         if serializer.is_valid():
             serializer.save()
