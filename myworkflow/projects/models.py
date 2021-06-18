@@ -18,6 +18,7 @@ class PersonalProject(models.Model):
     start_date = models.DateTimeField()
     importance_level = models.PositiveIntegerField(default=0)
     project_visibility = models.CharField(max_length=25, choices=VISIBILITY, default="public")
+    future_development_notes = models.TextField(default="None")
 
     def __str__(self):
         return self.name
