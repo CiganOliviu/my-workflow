@@ -1,5 +1,5 @@
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import redirect
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -11,9 +11,8 @@ from projects.serializers import DevelopmentStackSerializer, PersonalProjectsSer
 
 
 def index(request):
-    template = 'views/index.html'
 
-    return render(request, template_name=template)
+    return redirect('restapi/personal-projects/')
 
 
 class DevelopmentStackLister(APIView):
@@ -176,7 +175,7 @@ class UniversityClassesLister(APIView):
 
     def get(self, request, format=None):
         classes = UniversityClasses.objects.all()
-        serializer = PersonalFinishedProjectSerializer(classes, many=True)
+        serializer = UniversityClassesSerializer(classes, many=True)
 
         return Response(serializer.data)
 
