@@ -3,7 +3,7 @@ from .models import *
 
 
 class PersonalProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'stack', 'start_date', 'importance_level')
+    list_display = ('name', 'stack', 'start_date', 'importance_level', 'project_visibility')
 
 
 class PersonalFinishedProjectAdmin(admin.ModelAdmin):

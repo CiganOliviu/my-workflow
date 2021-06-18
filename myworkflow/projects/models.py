@@ -1,6 +1,6 @@
 from django.db import models
 
-from projects.data_structures import LEVEL_SUPPORT
+from projects.data_structures import LEVEL_SUPPORT, VISIBILITY
 
 
 class DevelopmentStack(models.Model):
@@ -17,6 +17,7 @@ class PersonalProject(models.Model):
     github_url = models.URLField(max_length=200)
     start_date = models.DateTimeField()
     importance_level = models.PositiveIntegerField(default=0)
+    project_visibility = models.CharField(max_length=25, choices=VISIBILITY, default="public")
 
     def __str__(self):
         return self.name
