@@ -16,6 +16,7 @@ class PersonalProject(models.Model):
     stack = models.ForeignKey(DevelopmentStack, on_delete=models.CASCADE)
     github_url = models.URLField(max_length=200)
     start_date = models.DateTimeField()
+    importance_level = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.name
