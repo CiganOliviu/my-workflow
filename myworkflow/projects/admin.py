@@ -3,7 +3,7 @@ from .models import *
 
 
 class PersonalProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'stack', 'start_date')
+    list_display = ('name', 'stack', 'start_date', 'importance_level')
 
 
 class PersonalFinishedProjectAdmin(admin.ModelAdmin):
@@ -15,9 +15,9 @@ class UniversityProjectAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DevelopmentStack)
-admin.site.register(PersonalProject)
-admin.site.register(PersonalFinishedProject)
-admin.site.register(UniversityProject)
+admin.site.register(PersonalProject, PersonalProjectAdmin)
+admin.site.register(PersonalFinishedProject, PersonalFinishedProjectAdmin)
+admin.site.register(UniversityProject, UniversityProjectAdmin)
 admin.site.register(UniversityClasses)
 
 admin.site.site_header = "MyWorkflow"
