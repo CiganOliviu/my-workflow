@@ -7,7 +7,7 @@ from rest_framework.views import APIView
 from projects.models import *
 
 from projects.serializers import DevelopmentStackSerializer, PersonalProjectsSerializer, UniversityProjectsSerializer, \
-    UniversityClassesSerializer, CurrentReadingBooksSerializer
+    UniversityClassesSerializer, CurrentReadingBooksSerializer, OrganizationsSerializer
 
 
 def index(request):
@@ -263,3 +263,26 @@ class CurrentReadingBooksDetails(APIView):
         book.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class OrganizationsLister(APIView):
+
+    def get(self, request, format=None):
+        organization = CurrentReadingBook.objects.all()
+        serializer = CurrentReadingBooksSerializer(organization, many=True)
+
+        return Response(serializer.data)
+
+    def post(self, request, format=None):
+        serializer = OrganizationsSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class OrganizationsDetails(APIView):
+    pass

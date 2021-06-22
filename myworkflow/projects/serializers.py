@@ -30,3 +30,9 @@ class CurrentReadingBooksSerializer(serializers.ModelSerializer):
     class Meta:
         model = CurrentReadingBook
         fields = '__all__'
+
+
+class OrganizationsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Organization
+        fields = '__all__'
