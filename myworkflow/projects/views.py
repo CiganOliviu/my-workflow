@@ -11,21 +11,18 @@ from projects.serializers import DevelopmentStackSerializer, PersonalProjectsSer
 
 
 def index(request):
-
     return redirect('restapi/personal-projects/')
 
 
 class DevelopmentStackLister(APIView):
 
     def get(self, request, format=None):
-
         stack = DevelopmentStack.objects.all()
         serializer = DevelopmentStackSerializer(stack, many=True)
 
         return Response(serializer.data)
 
     def post(self, request, format=None):
-
         serializer = DevelopmentStackSerializer(data=request.data)
 
         if serializer.is_valid():
@@ -70,14 +67,12 @@ class DevelopmentStackDetails(APIView):
 class PersonalProjectsLister(APIView):
 
     def get(self, request, format=None):
-
         projects = PersonalProject.objects.all()
         serializer = PersonalProjectsSerializer(projects, many=True)
 
         return Response(serializer.data)
 
     def post(self, request, format=None):
-
         serializer = PersonalProjectsSerializer(data=request.data)
 
         if serializer.is_valid():
@@ -122,14 +117,12 @@ class PersonalProjectsDetails(APIView):
 class UniversityProjectLister(APIView):
 
     def get(self, request, format=None):
-
         universities = UniversityProject.objects.all()
         serializer = UniversityProjectsSerializer(universities, many=True)
 
         return Response(serializer.data)
 
     def post(self, request, format=None):
-
         serializer = UniversityProjectsSerializer(data=request.data)
 
         if serializer.is_valid():
@@ -224,8 +217,8 @@ class UniversityClassesDetails(APIView):
 class CurrentReadingBooksLister(APIView):
 
     def get(self, request, format=None):
-        classes = CurrentReadingBook.objects.all()
-        serializer = CurrentReadingBooksSerializer(classes, many=True)
+        books = CurrentReadingBook.objects.all()
+        serializer = CurrentReadingBooksSerializer(books, many=True)
 
         return Response(serializer.data)
 
@@ -243,13 +236,30 @@ class CurrentReadingBooksLister(APIView):
 class CurrentReadingBooksDetails(APIView):
 
     def get_post(self, pk):
-        pass
+        try:
+            return CurrentReadingBook.objects.get(pk=pk)
+        except:
+            raise Http404
 
     def get(self, request, pk, format=None):
-        pass
+        post = self.get_post(pk)
+        serializer = CurrentReadingBooksSerializer(post)
+
+        return Response(serializer.data)
 
     def put(self, request, pk, format=None):
-        pass
+        book = self.get_post(pk)
+        serializer = CurrentReadingBooksSerializer(book, data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk, format=None):
-        pass
+        book = self.get_post(pk)
+        book.delete()
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
