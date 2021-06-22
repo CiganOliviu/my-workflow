@@ -4,10 +4,10 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from projects.models import DevelopmentStack, PersonalProject, UniversityProject, \
-    UniversityClasses
+from projects.models import *
+
 from projects.serializers import DevelopmentStackSerializer, PersonalProjectsSerializer, UniversityProjectsSerializer, \
-    UniversityClassesSerializer
+    UniversityClassesSerializer, CurrentReadingBooksSerializer
 
 
 def index(request):
@@ -224,10 +224,20 @@ class UniversityClassesDetails(APIView):
 class CurrentReadingBooksLister(APIView):
 
     def get(self, request, format=None):
-        pass
+        classes = CurrentReadingBook.objects.all()
+        serializer = CurrentReadingBooksSerializer(classes, many=True)
+
+        return Response(serializer.data)
 
     def post(self, request, format=None):
-        pass
+        serializer = CurrentReadingBooksSerializer(data=request.data)
+
+        if serializer.is_valid():
+            serializer.save()
+
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class CurrentReadingBooksDetails(APIView):

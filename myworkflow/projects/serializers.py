@@ -3,7 +3,6 @@ from rest_framework import serializers
 
 
 class DevelopmentStackSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = DevelopmentStack
         fields = '__all__'
@@ -24,4 +23,10 @@ class UniversityProjectsSerializer(serializers.ModelSerializer):
 class UniversityClassesSerializer(serializers.ModelSerializer):
     class Meta:
         model = UniversityClasses
+        fields = '__all__'
+
+
+class CurrentReadingBooksSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CurrentReadingBook
         fields = '__all__'
