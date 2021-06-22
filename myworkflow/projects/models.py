@@ -36,7 +36,13 @@ class Organization(models.Model):
 
 
 class CurrentReadingBook(models.Model):
-    pass
+    title = models.CharField(max_length=50)
+    author = models.CharField(max_length=50)
+    type = models.CharField(max_length=50)
+    read = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.title
 
 
 class UniversityProject(models.Model):
