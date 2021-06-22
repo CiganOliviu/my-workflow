@@ -24,4 +24,8 @@ urlpatterns = [
          name='CurrentReadingBooksLister'),
     path('restapi/current-reading-books/<int:pk>', views.CurrentReadingBooksDetails.as_view(),
          name='CurrentReadingBooksDetails'),
+    path('restapi/organizations/', views.OrganizationsLister.as_view(),
+         name='CurrentReadingBooksLister'),
+    path('restapi/organizations/<int:pk>', views.OrganizationsDetails.as_view(),
+         name='CurrentReadingBooksDetails'),
 ]
