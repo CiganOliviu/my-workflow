@@ -20,4 +20,8 @@ urlpatterns = [
          name='DevelopmentStackLister'),
     path('restapi/university-classes/<int:pk>', views.UniversityClassesDetails.as_view(),
          name='DevelopmentStackDetails'),
+    path('restapi/current-reading-books/', views.CurrentReadingBooksLister.as_view(),
+         name='DevelopmentStackLister'),
+    path('restapi/current-reading-books/<int:pk>', views.CurrentReadingBooksDetails.as_view(),
+         name='DevelopmentStackDetails'),
 ]

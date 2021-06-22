@@ -219,3 +219,27 @@ class UniversityClassesDetails(APIView):
         university.delete()
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class CurrentReadingBooksLister(APIView):
+
+    def get(self, request, format=None):
+        pass
+
+    def post(self, request, format=None):
+        pass
+
+
+class CurrentReadingBooksDetails(APIView):
+
+    def get_post(self, pk):
+        pass
+
+    def get(self, request, pk, format=None):
+        pass
+
+    def put(self, request, pk, format=None):
+        pass
+
+    def delete(self, request, pk, format=None):
+        pass
