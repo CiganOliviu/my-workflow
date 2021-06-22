@@ -35,6 +35,10 @@ class Organization(models.Model):
         return self.name
 
 
+class CurrentReadingBook(models.Model):
+    pass
+
+
 class UniversityProject(models.Model):
     name = models.CharField(max_length=50)
     details = models.TextField()
