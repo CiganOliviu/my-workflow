@@ -3,7 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path('restapi/development-stack/', views.DevelopmentStackLister.as_view(),
          name='DevelopmentStackLister'),
     path('restapi/development-stack/<int:pk>', views.DevelopmentStackDetails.as_view(),

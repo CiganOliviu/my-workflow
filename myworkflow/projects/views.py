@@ -4,13 +4,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from projects.models import *
-
 from projects.serializers import *
-
-
-def index(request):
-    return redirect('restapi/personal-projects/')
 
 
 class DevelopmentStackLister(APIView):
