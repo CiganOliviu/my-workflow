@@ -22,7 +22,5 @@ admin.site.register(DevelopmentStack)
 admin.site.register(PersonalProject, PersonalProjectAdmin)
 admin.site.register(PortfolioProject, PortfolioProjectAdmin)
 admin.site.register(Organization, OrganizationAdmin)
-admin.site.register(CurrentReadingBook)
-
 
 admin.site.site_header = "My Workflow"
