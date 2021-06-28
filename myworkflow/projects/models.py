@@ -35,16 +35,6 @@ class Organization(models.Model):
         return self.name
 
 
-class CurrentReadingBook(models.Model):
-    title = models.CharField(max_length=50)
-    author = models.CharField(max_length=50)
-    type = models.CharField(max_length=50)
-    read = models.BooleanField(default=False)
-
-    def __str__(self):
-        return self.title
-
-
 class PortfolioProject(models.Model):
     name = models.CharField(max_length=50, default="None", blank=False)
     details = models.TextField(default="None", blank=False)

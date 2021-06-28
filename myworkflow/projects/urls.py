@@ -3,7 +3,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path('restapi/development-stack/', views.DevelopmentStackLister.as_view(),
          name='DevelopmentStackLister'),
     path('restapi/development-stack/<int:pk>', views.DevelopmentStackDetails.as_view(),
@@ -12,10 +11,6 @@ urlpatterns = [
          name='PersonalProjectsLister'),
     path('restapi/personal-projects/<int:pk>', views.PersonalProjectsDetails.as_view(),
          name='PersonalProjectsDetails'),
-    path('restapi/current-reading-books/', views.CurrentReadingBooksLister.as_view(),
-         name='CurrentReadingBooksLister'),
-    path('restapi/current-reading-books/<int:pk>', views.CurrentReadingBooksDetails.as_view(),
-         name='CurrentReadingBooksDetails'),
     path('restapi/organizations/', views.OrganizationsLister.as_view(),
          name='CurrentReadingBooksLister'),
     path('restapi/organizations/<int:pk>', views.OrganizationsDetails.as_view(),
