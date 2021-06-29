@@ -12,9 +12,3 @@ class PersonalProjectsSerializer(serializers.ModelSerializer):
     class Meta:
         model = PersonalProject
         fields = '__all__'
-
-
-class OrganizationsSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Organization
-        fields = '__all__'
