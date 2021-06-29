@@ -1,3 +1,13 @@
 from django.shortcuts import render
+from rest_framework.views import APIView
 
-# Create your views here.
+
+class OrganizationsLister(APIView):
+    pass
+
+
+class OrganizationsDetails(APIView):
+    pass
+
+
+

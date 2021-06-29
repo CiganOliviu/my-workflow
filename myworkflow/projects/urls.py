@@ -11,8 +11,4 @@ urlpatterns = [
          name='PersonalProjectsLister'),
     path('restapi/personal-projects/<int:pk>', views.PersonalProjectsDetails.as_view(),
          name='PersonalProjectsDetails'),
-    path('restapi/organizations/', views.OrganizationsLister.as_view(),
-         name='CurrentReadingBooksLister'),
-    path('restapi/organizations/<int:pk>', views.OrganizationsDetails.as_view(),
-         name='CurrentReadingBooksDetails'),
 ]
