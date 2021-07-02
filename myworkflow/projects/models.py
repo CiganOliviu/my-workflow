@@ -1,6 +1,6 @@
 from django.db import models
 
-from projects.data_structures import LEVEL_SUPPORT, VISIBILITY
+from projects.data_structures import VISIBILITY
 
 
 class DevelopmentStack(models.Model):
